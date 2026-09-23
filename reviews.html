@@ -65,8 +65,7 @@ a.wordmark-link { display: inline-flex; }
 
 .nav-toggle {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -180,7 +179,11 @@ footer.simple {
 }
 
 
-main.reviews-main { max-width: 680px; }
+main.reviews-main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 6vw;
+}
 .write-review { border: 1px solid var(--line); padding: 34px; margin-bottom: 6vh; }
 .write-review h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 1.4rem; margin: 0 0 22px; text-align: center; }
 .stars { display: flex; justify-content: center; gap: 8px; margin-bottom: 22px; font-size: 1.8rem; }
