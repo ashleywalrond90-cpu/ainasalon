@@ -55,11 +55,9 @@ header {
   align-items: center;
   justify-content: center;
   position: relative;
-}
-.header-wordmark { height: 28px; width: auto; filter: brightness(0) saturate(100%); }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .header-wordmark { filter: brightness(0) saturate(100%) invert(1); }
-}
+<a class="wordmark-link" href="index.html">
+  <img class="header-wordmark" src="aina-wordmark.svg" alt="ĀINA">
+</a>
 :root[data-theme="dark"] .header-wordmark { filter: brightness(0) saturate(100%) invert(1); }
 a.wordmark-link { display: inline-flex; }
 
