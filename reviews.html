@@ -61,7 +61,12 @@ header {
   :root:not([data-theme="light"]) .header-wordmark { filter: brightness(0) saturate(100%) invert(1); }
 }
 :root[data-theme="dark"] .header-wordmark { filter: brightness(0) saturate(100%) invert(1); }
-a.wordmark-link { display: inline-flex; }
+a.wordmark-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
 
 .nav-toggle {
   position: absolute;
@@ -252,27 +257,26 @@ main.reviews-main {
       <div class="nav-dropdown" id="navDropdown">
         <a class="nav-home" href="index.html">Home</a>
 
-        
-<div class="nav-cols">
-  <div class="nav-col">
-    <h4>ĀINA Salon</h4>
-    <a href="./rsvp.html">RSVP</a>
-    <a href="./faq.html">FAQ</a>
-  </div>
+        <div class="nav-cols">
+          <div class="nav-col">
+            <h4>ĀINA Salon</h4>
+            <a href="./rsvp.html">RSVP</a>
+            <a href="./faq.html">FAQ</a>
+          </div>
 
-  <div class="nav-col">
-    <h4>ĀINA Shop</h4>
-    <a href="./about.html">ĀINA Hair</a>
-    <a href="./about.html">ĀINA Products</a>
-  </div>
-</div>
+          <div class="nav-col">
+            <h4>ĀINA Shop</h4>
+            <a href="./about.html">ĀINA Hair</a>
+            <a href="./about.html">ĀINA Products</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <a class="wordmark-link" href="./index.html">
+    <a class="wordmark-link" href="./index.html" aria-label="ĀINA home">
       <img
         class="header-wordmark"
-        src="./logo.png"
+        src="logo.png"
         alt="ĀINA"
       >
     </a>
