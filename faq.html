@@ -462,4 +462,12 @@ footer {
       navDropdown.classList.toggle('open');
       navToggle.classList.toggle('open');
     });
+
+    document.addEventListener('click', function (event) {
+      if (!navDropdown.contains(event.target) && event.target !== navToggle) {
+        navDropdown.classList.remove('open');
+        navToggle.classList.remove('open');
+      }
+    });
+  }
 </script>
