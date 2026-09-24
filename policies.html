@@ -18,27 +18,18 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
   box-sizing: border-box;
 }
-
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #161512;
-    --ink: #F3EFE6;
-    --sand: #C9B79C;
-    --taupe: #A69C8E;
+    --bg: #161512; --ink: #F3EFE6; --sand: #C9B79C; --taupe: #A69C8E;
     --line: rgba(243,239,230,0.14);
   }
 }
 :root[data-theme="dark"] {
-  --bg: #161512;
-  --ink: #F3EFE6;
-  --sand: #C9B79C;
-  --taupe: #A69C8E;
+  --bg: #161512; --ink: #F3EFE6; --sand: #C9B79C; --taupe: #A69C8E;
   --line: rgba(243,239,230,0.14);
 }
-
 * { box-sizing: border-box; }
 html { scroll-padding-top: env(safe-area-inset-top, 0px); }
-
 body {
   margin: 0;
   background: var(--bg);
@@ -50,12 +41,11 @@ body {
 header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 30;
   background: var(--bg);
   border-bottom: 1px solid var(--line);
   padding: env(safe-area-inset-top, 0px) 6vw 0;
 }
-
 .header-inner {
   max-width: 900px;
   margin: 0 auto;
@@ -65,29 +55,84 @@ header {
   justify-content: center;
   position: relative;
 }
-
-.header-wordmark {
-  height: 28px;
-  width: auto;
-  filter: brightness(0) saturate(100%);
-}
+.header-wordmark { height: 28px; width: auto; filter: brightness(0) saturate(100%); }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .header-wordmark { filter: brightness(0) saturate(100%) invert(1); }
 }
 :root[data-theme="dark"] .header-wordmark { filter: brightness(0) saturate(100%) invert(1); }
+a.wordmark-link { display: inline-flex; }
 
-.back-link {
+.nav-toggle {
   position: absolute;
   left: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
   font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--taupe);
-  text-decoration: none;
+  padding: 6px 0;
   transition: color 0.25s ease;
 }
-.back-link:hover { color: var(--ink); }
+.nav-toggle:hover, .nav-toggle.open { color: var(--ink); }
 
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 26px 30px;
+  display: none;
+  gap: 40px;
+  min-width: 320px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  z-index: 40;
+}
+.nav-dropdown.open { display: flex; }
+.nav-col h4 {
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin: 0 0 12px;
+  font-weight: 500;
+}
+.nav-col a {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
+}
+.nav-col a:hover { color: var(--taupe); }
+@media (max-width: 480px) {
+  .nav-dropdown { min-width: 260px; gap: 26px; padding: 22px 20px; }
+}
+
+
+.nav-dropdown {
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px 30px 26px;
+}
+.nav-home {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s ease;
+}
+.nav-home:hover { color: var(--taupe); }
+.nav-cols { display: flex; gap: 40px; }
+@media (max-width: 480px) { .nav-cols { gap: 26px; } }
 .page-intro {
   max-width: 700px;
   margin: 9vh auto 8vh;
@@ -253,3 +298,23 @@ footer {
 
 </body>
 </html>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navDropdown = document.getElementById('navDropdown');
+
+  if (navToggle && navDropdown) {
+    navToggle.addEventListener('click', function (event) {
+      event.stopPropagation();
+      navDropdown.classList.toggle('open');
+      navToggle.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!navDropdown.contains(event.target) && event.target !== navToggle) {
+        navDropdown.classList.remove('open');
+        navToggle.classList.remove('open');
+      }
+    });
+  }
+</script>
