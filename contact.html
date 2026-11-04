@@ -393,78 +393,82 @@ footer {
 </footer>
 
 <script>
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  const message = document.getElementById('message').value;
-
-  const subject = encodeURIComponent('Website Inquiry from ' + name);
-  let body = 'Name: ' + name + '\n';
-  body += 'Email: ' + email + '\n';
-  if (phone) { body += 'Phone: ' + phone + '\n'; }
-  body += '\nMessage:\n' + message;
-
+ 
 
 </script>
 <script>
-  // Contact form: submit without leaving the website
-  const contactForm = document.getElementById("contactForm");
-const successMessage = document.getElementById("successMessage");
-  
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function (event) {
-      event.preventDefault();
 
-      const submitButton = contactForm.querySelector('button[type="submit"]');
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sending...';
+// Contact form: submit without leaving the website
+const contactForm = document.getElementById('contactForm');
+const successMessage = document.getElementById('successMessage');
 
-      try {
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: new FormData(contactForm),
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
+if (contactForm && successMessage) {
+  contactForm.addEventListener('submit', async function(event) {
+    event.preventDefault();
 
-        if (response.ok) {
-         if (response.ok) {
-  contactForm.reset();
-  successMessage.style.display = "block";
-}
-        } else {
-          throw new Error('Submission failed');
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+
+    // Remove any previous error message
+    const oldError = document.getElementById('formError');
+    if (oldError) oldError.remove();
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: {
+          'Accept': 'application/json'
         }
-      } catch (error) {
-         'afterend',
-  '<p class="form-error" role="alert">We’re sorry, something went wrong. Please try again.</p>'
-);
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Send';
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
       }
-    });
-  }
 
-  // Keep your navigation menu working
-  const navToggle = document.getElementById('navToggle');
-  const navDropdown = document.getElementById('navDropdown');
+      contactForm.reset();
+      contactForm.style.display = 'none';
+      successMessage.style.display = 'block';
 
-  if (navToggle && navDropdown) {
-    navToggle.addEventListener('click', function (event) {
-      event.stopPropagation();
-      navDropdown.classList.toggle('open');
-      navToggle.classList.toggle('open');
-    });
+    } catch (error) {
+      const errorMessage = document.createElement('p');
+      errorMessage.id = 'formError';
+      errorMessage.className = 'form-error';
+      errorMessage.setAttribute('role', 'alert');
+      errorMessage.textContent =
+        'We’re sorry, something went wrong. Please try again.';
 
-    document.addEventListener('click', function (event) {
-      if (!navDropdown.contains(event.target) && event.target !== navToggle) {
-        navDropdown.classList.remove('open');
-        navToggle.classList.remove('open');
-      }
-    });
-  }
+      contactForm.insertAdjacentElement('afterend', errorMessage);
+
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send';
+    }
+  });
+}
+
+// Keep your navigation menu working
+const navToggle = document.getElementById('navToggle');
+const navDropdown = document.getElementById('navDropdown');
+
+if (navToggle && navDropdown) {
+  navToggle.addEventListener('click', function(event) {
+    event.stopPropagation();
+    navDropdown.classList.toggle('open');
+    navToggle.classList.toggle('open');
+  });
+
+  document.addEventListener('click', function(event) {
+    if (!navDropdown.contains(event.target) &&
+        event.target !== navToggle) {
+      navDropdown.classList.remove('open');
+      navToggle.classList.remove('open');
+    }
+  });
+}
+
 </script>
 </body>
 </html>
@@ -490,3 +494,6 @@ const successMessage = document.getElementById("successMessage");
     });
   }
 </script>
+
+</body>
+</html>
