@@ -392,7 +392,66 @@ footer {
 
 
 </script>
+<script>
+  // Contact form: submit without leaving the website
+  const contactForm = document.getElementById('contactForm');
 
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          contactForm.reset();
+          contactForm.insertAdjacentHTML(
+            'afterend',
+            '<p role="status" style="text-align:center; margin-top:20px;">Thank you! Your message has been sent successfully. We will be in touch soon.</p>'
+          );
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (error) {
+        alert('Sorry, your message could not be sent. Please try again.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send';
+      }
+    });
+  }
+
+  // Keep your navigation menu working
+  const navToggle = document.getElementById('navToggle');
+  const navDropdown = document.getElementById('navDropdown');
+
+  if (navToggle && navDropdown) {
+    navToggle.addEventListener('click', function (event) {
+      event.stopPropagation();
+      navDropdown.classList.toggle('open');
+      navToggle.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!navDropdown.contains(event.target) && event.target !== navToggle) {
+        navDropdown.classList.remove('open');
+        navToggle.classList.remove('open');
+      }
+    });
+  }
+</script>
+</body>
+</html>
 </body>
 </html>
 
