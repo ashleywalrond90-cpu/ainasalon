@@ -170,21 +170,22 @@ form {
   flex-direction: column;
   gap: 26px;
 }
-.form-success {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
+.form-success,
+.form-error {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
   text-align: center;
   margin-top: 20px;
   line-height: 1.6;
 }
+
+.form-success {
+  color: var(--ink);
+}
+
 .form-error {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  text-align: center;
-  margin-top: 20px;
-  line-height: 1.6;
+  color: #9b3d3d;
 }
 .field label {
   display: block;
