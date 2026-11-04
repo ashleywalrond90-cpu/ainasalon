@@ -471,26 +471,5 @@ if (navToggle && navDropdown) {
 
 </script>
 
-
-<script>
-  const navToggle = document.getElementById('navToggle');
-  const navDropdown = document.getElementById('navDropdown');
-
-  if (navToggle && navDropdown) {
-    navToggle.addEventListener('click', function (event) {
-      event.stopPropagation();
-      navDropdown.classList.toggle('open');
-      navToggle.classList.toggle('open');
-    });
-
-    document.addEventListener('click', function (event) {
-      if (!navDropdown.contains(event.target) && event.target !== navToggle) {
-        navDropdown.classList.remove('open');
-        navToggle.classList.remove('open');
-      }
-    });
-  }
-</script>
-
 </body>
 </html>
