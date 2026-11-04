@@ -417,13 +417,15 @@ footer {
           contactForm.reset();
           contactForm.insertAdjacentHTML(
             'afterend',
-            '<p role="status" style="text-align:center; margin-top:20px;">Thank you! Your message has been sent successfully. We will be in touch soon.</p>'
+            '<p class="form-success" role="status">Thank you for reaching out to ĀINA. Your message has been received, and we look forward to connecting with you.</p>'
           );
         } else {
           throw new Error('Submission failed');
         }
       } catch (error) {
-        alert('Sorry, your message could not be sent. Please try again.');
+         'afterend',
+  '<p class="form-error" role="alert">We’re sorry, something went wrong. Please try again.</p>'
+);
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = 'Send';
