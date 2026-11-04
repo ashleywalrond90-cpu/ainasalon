@@ -294,26 +294,83 @@ footer {
 </div>
 
 <main>
-  <form id="contactForm">
-    <div class="field">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
-    </div>
-    <div class="field">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-    <div class="field">
-      <label for="phone">Phone (optional)</label>
-      <input type="tel" id="phone" name="phone">
-    </div>
-    <div class="field">
-      <label for="message">Your Message</label>
-      <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
-    </div>
-    <button type="submit" class="submit-btn">Send</button>
-  </form>
-  <p class="note">Submitting this form will open your email app, addressed directly to our team.</p>
+  
+<form
+  id="contactForm"
+  action="https://formspree.io/f/xaeevbyr"
+  method="POST"
+  accept-charset="UTF-8"
+>
+  <!-- Spam protection: honeypot -->
+  <div style="display:none;" aria-hidden="true">
+    <label for="website">Leave this field empty</label>
+    <input
+      type="text"
+      id="website"
+      name="_gotcha"
+      tabindex="-1"
+      autocomplete="off"
+    >
+  </div>
+
+  <div class="field">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      minlength="2"
+      maxlength="80"
+      autocomplete="name"
+    >
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      maxlength="120"
+      autocomplete="email"
+    >
+  </div>
+
+  <div class="field">
+    <label for="phone">Phone (optional)</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      maxlength="30"
+      autocomplete="tel"
+    >
+  </div>
+
+  <div class="field">
+    <label for="message">Your Message</label>
+    <textarea
+      id="message"
+      name="message"
+      placeholder="Tell us what's on your mind..."
+      required
+      minlength="10"
+      maxlength="1500"
+    ></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">
+    Send
+  </button>
+</form>
+
+<p class="note">
+  Thank you for reaching out to ĀINA. We look forward
+  to hearing from you.
+</p>
+
 </main>
 
 <footer>
@@ -322,8 +379,6 @@ footer {
 </footer>
 
 <script>
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const phone = document.getElementById('phone').value;
