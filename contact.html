@@ -170,7 +170,14 @@ form {
   flex-direction: column;
   gap: 26px;
 }
-.form-success,
+.form-success {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.6;
+}
 .form-error {
   font-family: inherit;
   font-size: inherit;
@@ -374,9 +381,8 @@ footer {
   </button>
 </form>
 
-<p class="note">
-  Thank you for reaching out to ĀINA. We look forward
-  to hearing from you.
+<p id="successMessage" class="form-success" style="display: none;" role="status">
+  Thank you for reaching out to ĀINA. We look forward to hearing from you.
 </p>
 
 </main>
@@ -402,8 +408,9 @@ footer {
 </script>
 <script>
   // Contact form: submit without leaving the website
-  const contactForm = document.getElementById('contactForm');
-
+  const contactForm = document.getElementById("contactForm");
+const successMessage = document.getElementById("successMessage");
+  
   if (contactForm) {
     contactForm.addEventListener('submit', async function (event) {
       event.preventDefault();
@@ -422,11 +429,10 @@ footer {
         });
 
         if (response.ok) {
-          contactForm.reset();
-          contactForm.insertAdjacentHTML(
-            'afterend',
-            '<p class="form-success" role="status">Thank you for reaching out to ĀINA. Your message has been received, and we look forward to connecting with you.</p>'
-          );
+         if (response.ok) {
+  contactForm.reset();
+  successMessage.style.display = "block";
+}
         } else {
           throw new Error('Submission failed');
         }
