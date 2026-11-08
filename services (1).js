@@ -24,7 +24,7 @@ const services = [
     duration: 30,
     price: 0, // CHECK: the PDF shows "300" - read as 30 min / BBD $0
     description: "The ĀINA Client Consultation is an opportunity for current clients to discuss your evolving hair goals, explore new styles, and address any questions or concerns you may have about your hair. Whether you're considering a change, maintaining your current look, or seeking guidance on your haircare routine, this one-on-one experience allows us to take a closer look at your needs and create a thoughtful approach to achieving your desired results. During your consultation, we discuss your styling preferences, hair history, current condition, and maintenance routine. Together, we explore suitable service options and recommendations that align with your hair goals, lifestyle, and long-term hair care needs. Our aim is to ensure you feel informed, confident, and comfortable with your service plan before moving forward.",
-    link: ""
+    link: "https://app.acuityscheduling.com/schedule/be07cd67/appointment/98559784/calendar/14588098"
   },
   {
     category: "Consultations",
@@ -32,7 +32,7 @@ const services = [
     duration: 30,
     price: 50,
     description: "Your introduction to ĀINA begins with a personalized consultation designed to help us understand you, your hair, and what you hope to achieve. This initial experience allows us to become familiar with your hair history, previous treatments, lifestyle, and styling preferences while giving you the opportunity to discover our approach to hair care and the services we offer. Whether you're looking to maintain your current look, explore something new, or establish a more intentional haircare routine, we want to understand the bigger picture before recommending a direction. During your consultation, we assess your hair's current condition, discuss your goals, and identify services and treatments best suited to your needs. We'll also walk through recommended maintenance, styling options, and any necessary preparation to help you achieve the best possible outcome. This is your opportunity to ask questions, share inspiration, and get acquainted with the ĀINA experience. By the end of your consultation, you'll have a clearer understanding of your hair's needs and a personalized plan to guide your journey with us. Your consultation fee will be credited toward your future appointment.",
-    link: ""
+    link: "https://app.acuityscheduling.com/schedule/be07cd67/appointment/98559784/calendar/14588098"
   },
   {
     category: "Consultations",
@@ -40,7 +40,7 @@ const services = [
     duration: 30,
     price: 20,
     description: "Your journey to beautifully customized extensions begins with a private, one-on-one virtual consultation. This experience is designed to explore your desired look while ensuring your natural hair remains at the forefront of every recommendation. We'll take the time to understand your hair history, assess its current condition, discuss your length and volume goals, and guide you through the extension methods best suited to your hair and lifestyle. Together, we'll establish a personalized installation plan, covering your preferred look, suitable techniques, and the preparation needed ahead of your appointment. At the conclusion of your consultation, you'll have the opportunity to secure your installation appointment. Your consultation fee will be credited toward your extension service. Exclusively available to new extension clients.",
-    link: ""
+    link: "https://app.acuityscheduling.com/schedule/be07cd67/appointment/98559784/calendar/14588098"
   },
 
   // ---------- MENU ----------
@@ -50,7 +50,7 @@ const services = [
     duration: 90,
     price: 200,
     description: "More than a ponytail, this experience begins with a clarifying and moisturizing cleanse to refresh and rebalance, followed by a deep conditioning steam treatment to hydrate every strand. Your hair is left prepped, moisturized and protected from heat. Using infrared technology your hair is dried while locking in moisture and then carefully pressed. A trim is included if necessary. Your hair is carefully sculpted into a smooth ponytail of your choice. For your finish your extensions are styled to your preference leaving you feeling polished and renewed.",
-    link: ""
+    link: "https://app.acuityscheduling.com/schedule/be07cd67/appointment/98559784/calendar/14588098"
   },
   {
     category: "Menu",
@@ -58,7 +58,7 @@ const services = [
     duration: 150,
     price: 180,
     description: "Maintain your smooth, sleek look with a carefully tailored relaxer retouch designed to complement your hair's natural growth pattern. This service focuses on refreshing new growth while giving special attention to the condition of your previously relaxed hair. We begin by evaluating your hair and scalp to determine the appropriate application and ensure your service is approached with the care and precision your hair deserves. The treatment includes the careful protection of previously relaxed lengths, targeted relaxer application to new growth, and a thorough neutralizing and moisturizing cleanse to restore the hair after processing. A nourishing conditioning treatment follows to replenish moisture, enhance softness, and leave your strands feeling revitalized. Your service concludes with a precision trim and a customized finish, styled to your preference for a smooth, refined result that is easy to maintain and beautifully suited to your everyday routine.",
-    link: ""
+    link: "https://app.acuityscheduling.com/schedule/be07cd67/appointment/98559784/calendar/14588098"
   },
   {
     category: "Menu",
