@@ -296,9 +296,6 @@ main.reviews-main {
     <div class="empty-state" id="emptyState">Loading reviews...</div>
   </div>
 
-  <div class="manage-row">
-    <button class="manage-btn" id="manageToggle">Manage Reviews</button>
-  </div>
   <div class="admin-panel" id="adminPanel">
     <h2>Pending Approval</h2>
     <div id="pendingList"><div class="no-pending">Loading...</div></div>
@@ -433,13 +430,6 @@ async function loadAll() {
   } catch (e) { console.error(e); }
 }
 
-document.getElementById('manageToggle').addEventListener('click', () => {
-  const panel = document.getElementById('adminPanel');
-  if (panel.classList.contains('open')) { panel.classList.remove('open'); return; }
-  const code = prompt('Enter admin passcode to manage reviews:');
-  if (code === ADMIN_CODE) { panel.classList.add('open'); loadAll(); }
-  else if (code !== null) { alert('Incorrect passcode.'); }
-});
 
 document.getElementById('submitReview').addEventListener('click', async () => {
   const name = document.getElementById('reviewerName').value.trim();
