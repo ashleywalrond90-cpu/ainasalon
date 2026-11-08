@@ -403,10 +403,6 @@ main.catalog { max-width: 960px; }
   <p>Curated products for healthy, beautiful hair.</p>
 </div>
 
-<main class="catalog">
-<div class="catalog-toolbar">
-    <button class="manage-btn" id="manageToggle">Manage Products</button>
-  </div>
 
   <div class="admin-panel" id="adminPanel">
     <h2>Add a Product</h2>
@@ -507,19 +503,6 @@ function renderProducts(products) {
   });
 }
 
-document.getElementById('manageToggle').addEventListener('click', () => {
-  const panel = document.getElementById('adminPanel');
-  if (panel.classList.contains('open')) {
-    panel.classList.remove('open');
-    return;
-  }
-  const code = prompt('Enter admin passcode to manage products:');
-  if (code === ADMIN_CODE) {
-    panel.classList.add('open');
-  } else if (code !== null) {
-    alert('Incorrect passcode.');
-  }
-});
 
 document.getElementById('addProductBtn').addEventListener('click', async () => {
   const name = document.getElementById('pName').value.trim();
