@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>RSVP — ĀINA Salon & Hairdressers in Barbados, Salon in Barbados, Sew ins and Treatments in Barbados, Barbados Head Spa, #1 Salon in Barbados</title>
 <meta name="description" content="Book an appointment at ĀINA, How to reserve an appointment ĀINA, Salon bookings in Bridgetown Barbados, Salon bookings in Holetown Barbados, Sew-ins Barbadsos | Relaxers Barbados| Treatments Barbados| Hair Spa Experience Barbados,  hair salon in Barbados.">
-<link rel="canonical" href="https://ainasalon.com/rsvp.html">   
+<link rel="canonical" href="https://ainasalon.com/rsvp.html">
 <link rel="icon" type="image/jpeg" href="IMG_0950.jpeg">
 <style>
 
@@ -17,6 +17,7 @@
   --sand: #C9B79C;
   --taupe: #8C8378;
   --line: rgba(23,22,20,0.12);
+  --header-h: 74px;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
   box-sizing: border-box;
@@ -32,7 +33,7 @@
   --line: rgba(243,239,230,0.14);
 }
 * { box-sizing: border-box; }
-html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
@@ -180,52 +181,6 @@ footer.simple {
   color: var(--taupe);
 }
 
-
-.rsvp-wrap {
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 4vh 6vw 14vh;
-  text-align: center;
-}
-.rsvp-mark {
-  width: min(90px, 18vw);
-  margin: 0 auto 34px;
-  filter: brightness(0) saturate(100%);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .rsvp-mark { filter: brightness(0) saturate(100%) invert(1); }
-}
-:root[data-theme="dark"] .rsvp-mark { filter: brightness(0) saturate(100%) invert(1); }
-.rsvp-cta {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 16px 48px;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: background 0.35s ease, color 0.35s ease;
-}
-.rsvp-cta:hover { background: var(--ink); color: var(--bg); }
-.rsvp-note {
-  margin-top: 22px;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
-  color: var(--taupe);
-  font-size: 0.95rem;
-}
-
-</style>
-</head>
-<body>
-
-<header>
- <style>
-:root { --header-h: 74px; }
-html { scroll-behavior: smooth; }
 
 /* ---------- Services / reservations ---------- */
 
@@ -390,7 +345,35 @@ html { scroll-behavior: smooth; }
   font-style: italic;
   color: var(--taupe);
 }
+
 </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="nav-toggle-wrap">
+      <button class="nav-toggle" id="navToggle">Menu</button>
+      <div class="nav-dropdown" id="navDropdown">
+        <a class="nav-home" href="./index.html">Home</a>
+        <div class="nav-cols">
+          <div class="nav-col">
+            <h4>&#256;INA Salon</h4>
+            <a href="./rsvp.html">RSVP</a>
+            <a href="./faq.html">FAQ</a>
+          </div>
+          <div class="nav-col">
+            <h4>&#256;INA Shop</h4>
+            <a href="hair.html">ĀINA Hair</a>
+            <a href="products.html">ĀINA Products</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- LOGO: replace PASTE-YOUR-LOGO-HERE with the src value from the header logo in your current rsvp.html (the long data:image/png;base64,... text) -->
+    <a class="wordmark-link" href="index.html"><img class="header-wordmark" src="PASTE-YOUR-LOGO-HERE" alt="ĀINA"></a>
+  </div>
+</header>
 
 <div class="page-intro">
   <h1>RSVP</h1>
@@ -405,10 +388,33 @@ html { scroll-behavior: smooth; }
   <noscript><p class="services-empty">Please enable JavaScript to view our services.</p></noscript>
 </main>
 
+<footer class="simple">
+  <a class="f-back" href="./index.html">Back to home</a>
+  <div class="f-bottom">ĀINA — all rights reserved</div>
+</footer>
+
 <!-- Your services list. Keep services.js in the same folder as this page. -->
 <script src="services.js"></script>
 
 <script>
+
+/* ---------- Menu dropdown (unchanged) ---------- */
+const navToggle = document.getElementById('navToggle');
+const navDropdown = document.getElementById('navDropdown');
+if (navToggle && navDropdown) {
+  navToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navDropdown.classList.toggle('open');
+    navToggle.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!navDropdown.contains(e.target) && e.target !== navToggle) {
+      navDropdown.classList.remove('open');
+      navToggle.classList.remove('open');
+    }
+  });
+}
+
 /* ---------- Services page ---------- */
 (function () {
   var root = document.getElementById('servicesRoot');
@@ -552,30 +558,6 @@ html { scroll-behavior: smooth; }
     sections.forEach(function (sec) { io.observe(sec); });
   }
 })();
-</script>
-  
-<footer class="simple">
-  <a class="f-back" href="./index.html">Back to home</a>
-  <div class="f-bottom">ĀINA — all rights reserved</div>
-</footer>
-
-<script>
-
-const navToggle = document.getElementById('navToggle');
-const navDropdown = document.getElementById('navDropdown');
-if (navToggle && navDropdown) {
-  navToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    navDropdown.classList.toggle('open');
-    navToggle.classList.toggle('open');
-  });
-  document.addEventListener('click', (e) => {
-    if (!navDropdown.contains(e.target) && e.target !== navToggle) {
-      navDropdown.classList.remove('open');
-      navToggle.classList.remove('open');
-    }
-  });
-}
 
 </script>
 
